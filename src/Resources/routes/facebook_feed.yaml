@@ -1,0 +1,4 @@
+facebook_feed:
+  path: /facebook-feed.xml
+  controller: DarkSidePro\SyliusFacebookFeedPlugin\Controller\FacebookFeedController
+  methods: [GET]
