@@ -22,7 +22,7 @@ class ProductFeedItemFactory
         );
 
         return new ProductFeedItem(
-           (string) $variant->getCode(),
+           (string) $variant->id,
             $translation->getName(),
             $this->generateProductUrl($product, $channel),
             $this->getFirstImagePath($product),

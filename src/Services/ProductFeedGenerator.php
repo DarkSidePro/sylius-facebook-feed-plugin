@@ -8,12 +8,12 @@ use DarkSidePro\SyliusFacebookFeedPlugin\Exporter\FacebookFeedExporterInterface;
 use DarkSidePro\SyliusFacebookFeedPlugin\Factory\ProductFeedItemFactory;
 use DarkSidePro\SyliusFacebookFeedPlugin\Services\FeedGeneratorInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface;
+use DarkSidePro\SyliusFacebookFeedPlugin\Repository\ProductVariantRepository;
 
 final class ProductFeedGenerator implements FeedGeneratorInterface
 {
     public function __construct(
-        private ProductVariantRepositoryInterface $productVariantRepository,
+        private ProductVariantRepository $productVariantRepository,
         private ProductFeedItemFactory $feedItemFactory,
         private FacebookFeedExporterInterface $exporter
     ) {
@@ -21,7 +21,8 @@ final class ProductFeedGenerator implements FeedGeneratorInterface
 
     public function generate(ChannelInterface $channel): string
     {
-        $variants = $this->productVariantRepository->findEnabledForChannel($channel);
+        $variants = $this->productVariantRepository->findEnabledVariantsForChannel($channel);
+
         $items = array_map(
             fn ($v) => $this->feedItemFactory->create($v, $channel),
             $variants

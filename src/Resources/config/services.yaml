@@ -9,3 +9,9 @@ services:
   
   DarkSidePro\SyliusFacebookFeedPlugin\Command\GenerateFacebookFeedCommand:
     tags: ['console.command']
+
+  DarkSidePro\SyliusFacebookFeedPlugin\Repository\ProductVariantRepository:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - 'Sylius\Component\Core\Model\ProductVariant'
+    tags: ['doctrine.repository_service']
