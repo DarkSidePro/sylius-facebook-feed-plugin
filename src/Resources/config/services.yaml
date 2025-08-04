@@ -3,15 +3,10 @@ services:
     autowire: true
     autoconfigure: true
 
+  DarkSidePro\SyliusFacebookFeedPlugin\:
+    resource: '../../*'
+    exclude: '../../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
   DarkSidePro\SyliusFacebookFeedPlugin\Exporter\FacebookFeedExporterInterface: '@DarkSidePro\SyliusFacebookFeedPlugin\Exporter\XmlFacebookFeedExporter'
   
   DarkSidePro\SyliusFacebookFeedPlugin\Services\FeedGeneratorInterface: '@DarkSidePro\SyliusFacebookFeedPlugin\Services\ProductFeedGenerator'
-  
-  DarkSidePro\SyliusFacebookFeedPlugin\Command\GenerateFacebookFeedCommand:
-    tags: ['console.command']
-
-  DarkSidePro\SyliusFacebookFeedPlugin\Repository\ProductVariantRepository:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - 'Sylius\Component\Core\Model\ProductVariant'
-    tags: ['doctrine.repository_service']

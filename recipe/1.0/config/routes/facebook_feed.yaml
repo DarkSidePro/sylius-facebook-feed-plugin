@@ -1,0 +1,2 @@
+facebook_feed:
+    resource: "@FacebookFeedPlugin/Resources/routes/facebook_feed.yaml"
