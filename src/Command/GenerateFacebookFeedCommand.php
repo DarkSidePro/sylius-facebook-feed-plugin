@@ -6,15 +6,18 @@ namespace DarkSidePro\SyliusFacebookFeedPlugin\Command;
 
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use DarkSidePro\SyliusFacebookFeedPlugin\Services\FeedGeneratorInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'app:facebook-feed:generate',
+    description: 'Generate Facebook product feed'
+)]
 final class GenerateFacebookFeedCommand extends Command
 {
-    protected static $defaultName = 'app:facebook-feed:generate';
-
     public function __construct(
         private FeedGeneratorInterface $feedGenerator,
         private ChannelContextInterface $channelContext
