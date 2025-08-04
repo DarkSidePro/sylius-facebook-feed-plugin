@@ -1,7 +1,7 @@
 {
     "name": "darksidepro/sylius-facebook-feed-plugin",
     "type": "sylius-plugin",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Facebook Product Feed generator for Sylius 2.x",
     "license": "MIT",
     "require": {
